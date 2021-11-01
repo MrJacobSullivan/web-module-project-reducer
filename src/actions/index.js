@@ -1,12 +1,21 @@
-export const ADD_ONE = 'ADD_ONE'
+import { ACTIONS } from '../lib'
 
-export const APPLY_NUMBER = 'APPLY_NUMBER'
-export const CHANGE_OPERATION = 'CHANGE_OPERATION'
-
-export const addOne = () => {
-  return { type: ADD_ONE }
+const actions = {
+  applyNumber: (number) => {
+    return { type: ACTIONS.APPLY_NUMBER, payload: number }
+  },
+  clearNumner: () => {
+    return { type: ACTIONS.CLEAR_NUMBER }
+  },
+  applyMemory: () => {
+    return { type: ACTIONS.APPLY_MEMORY }
+  },
+  clearMemory: () => {
+    return { type: ACTIONS.CLEAR_MEMORY }
+  },
+  changeOperation: (operation) => {
+    return { type: ACTIONS.CHANGE_OPERATION, payload: operation }
+  },
 }
 
-export const applyNumber = (number) => {
-  return { type: APPLY_NUMBER, payload: number }
-}
+export { actions }

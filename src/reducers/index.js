@@ -1,18 +1,18 @@
-import { ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION } from './../actions'
+import { ACTIONS, OPERATIONS } from '../lib'
 
-export const initialState = {
-  total: 100,
-  operation: '*',
-  memory: 100,
+const initialState = {
+  total: 0,
+  operation: OPERATIONS.ADD,
+  memory: 0,
 }
 
 const calculateResult = (num1, num2, operation) => {
   switch (operation) {
-    case '+':
+    case OPERATIONS.ADD:
       return num1 + num2
-    case '*':
+    case OPERATIONS.MUL:
       return num1 * num2
-    case '-':
+    case OPERATIONS.SUB:
       return num1 - num2
     default:
       return null
@@ -21,23 +21,23 @@ const calculateResult = (num1, num2, operation) => {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case ADD_ONE:
-      return {
-        ...state,
-        total: state.total + 1,
-      }
-
-    case APPLY_NUMBER:
+    case ACTIONS.APPLY_NUMBER:
       return {
         ...state,
         total: calculateResult(state.total, action.payload, state.operation),
       }
 
-    case CHANGE_OPERATION:
-      return {
-        ...state,
-        operation: action.payload,
-      }
+    case ACTIONS.CLEAR_NUMBER:
+      return { ...state, total: initialState.total }
+
+    case ACTIONS.APPLY_MEMORY:
+      return { ...state, memory: state.total }
+
+    case ACTIONS.CLEAR_MEMORY:
+      return { ...state, memory: initialState.memory }
+
+    case ACTIONS.CHANGE_OPERATION:
+      return { ...state, operation: action.payload }
 
     default:
       return state
@@ -45,3 +45,4 @@ const reducer = (state, action) => {
 }
 
 export default reducer
+export { initialState }
