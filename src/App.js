@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import TotalDisplay from './components/TotalDisplay'
 import CalcButton from './components/CalcButton'
+import reducer, { initialState } from './reducers'
 import './App.css'
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState)
+
   return (
     <div className='App'>
       <nav className='navbar navbar-dark bg-dark'>
