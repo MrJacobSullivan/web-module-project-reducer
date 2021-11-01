@@ -12,4 +12,11 @@ const OPERATIONS = {
   MUL: '*',
 }
 
-export { ACTIONS, OPERATIONS }
+const BUTTONS = {
+  ADD_MEMORY: 'M+',
+  USE_MEMORY: 'MR',
+  CLEAR_MEMORY: 'MC',
+  CLEAR_TOTAL: 'CE',
+}
+
+export { ACTIONS, OPERATIONS, BUTTONS }
